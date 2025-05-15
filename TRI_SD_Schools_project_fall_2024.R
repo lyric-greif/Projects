@@ -74,7 +74,7 @@ schools$Chron_Ab = schools$Chron_Ab * schools$Cum_enr
 
 
 model1 = lm(Chron_Ab ~ HubDist + Cum_enr + Hispanic + White + Black, data = schools)
-summary(model1) # shows that distance increases absence but not significant; number of hispanic students is significant, as well as black; need to connect with census info for better results
+summary(model1) 
 
 # join school and score data
 
@@ -124,17 +124,13 @@ m1 = lm(HubDist ~ med_inc12, data = all_data)
 summary(m1) 
 plot(m1)
 
-
-
 m2 = lm(HubDist ~ med_inc12 + totalpop + white + black + hisp_lat, data = all_data)
 summary(m2) 
 plot(m2)
 
-
-
 # Math standards not met
 model2 = lm(mthstnm ~ HubDist + cum_enr + hisp_pr + wht_prc + blck_pr + med_inc12 + totalpop, data = all_data)
-summary(model2) # distance not clearly correlated, but median income is, and median income is correlated with distance
+summary(model2) 
 
 
 # Math standards exceeded: TRI 0.5/1/2 miles away
@@ -165,8 +161,6 @@ summary(chron1)
 
 
 #-------------------------------------------------------------------------------------------------------------------------------------
-
-
 # GWR on all_data 
 
 #join with coordinates
@@ -192,13 +186,10 @@ na_rows_med_inc12
 
 
 # impute median income value for missing value
-
 all_data_sf <- all_data_sf %>%
   mutate(med_inc12 = if_else(is.na(med_inc12) & schoold == "167", 42722, med_inc12))
 
-
-
-# Step 1) Linear model to gauge relationship
+# Linear model to gauge relationship
 
 lin1 = lm(math4ex ~ tri_half_mi, data = all_data_sf)
 residuals = residuals(lin1)
