@@ -1,5 +1,3 @@
-setwd("C:/Users/C2KSD/Desktop/capstone")
-
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
