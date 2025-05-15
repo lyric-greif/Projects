@@ -1,11 +1,3 @@
-
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
-setwd("C:/Users/C2KSD/Desktop/capstone")
-
-#=====================================================================================================
-
 # SHELDUS Fire Data 
 
 sheldus = read_csv("sheldus_3.1.25.csv")
