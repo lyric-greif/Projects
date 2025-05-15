@@ -4,9 +4,6 @@ library(ggplot2)
 library(dplyr)
 setwd("C:/Users/C2KSD/Desktop/capstone")
 
-
-
-
 #=====================================================================================================
 
 # SHELDUS Fire Data 
@@ -22,10 +19,7 @@ fires = sheldus %>%
 #=======================================================================================================================
 
 # ZORI data 
-
 rent_wide = read.csv("zori.csv")
-
-
 # Convert to long format and fix date format 
 rent_long = rent_wide %>% 
   pivot_longer(
@@ -93,9 +87,6 @@ fires <- fires %>%
 # remove trailing spaces
 rent_long <- rent_long %>%
   mutate(county = str_trim(county))
-
-
-
 #=================================================================================================
 #Merge ZORI and SHELDUS datasets 
 
@@ -115,7 +106,7 @@ rent_fire_df = rent_fire_df %>%
 
 write.csv(rent_fire_df, file = "rent_fires_updated_df.csv")
 
-#-----------------------------------------------------------------------------------------------------------------------------------
+#=================================================================================================
 # Code time period and first treatment
 
 rent_fire_df = rent_fire_df %>%
@@ -130,10 +121,8 @@ rent_fire_df = rent_fire_df %>%
   left_join(group, by = c("state", "county"))
 
 
-#-----------------------------------------------------------------------------------------------------------------------------------
-
+#=================================================================================================
 # Import and join urban-rural continuum codes
-
 urb_rur = read.csv("rural_urban_code.csv")
 
 # trim trailing spaces 
@@ -151,6 +140,5 @@ rent_fire_df = rent_fire_df %>%
 
 rent_fire_df = rent_fire_df %>%
   mutate(urban_metro = ifelse(rur_urb_code == 1, 1, 0))
-
 
 write.csv(rent_fire_df, file = "rent_fire_df_3.3.25.csv")
