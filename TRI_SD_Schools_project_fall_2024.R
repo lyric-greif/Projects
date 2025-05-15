@@ -1,6 +1,3 @@
-
-
-setwd("C:/Users/C2KSD/Desktop/GIS Assignments and Labs/GIS Final Project")
 library(tidyverse)
 library(sf)
 library(spdep)
